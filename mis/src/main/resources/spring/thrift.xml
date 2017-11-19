@@ -1,0 +1,26 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <!--thrift连接池工厂类配置 + 连接池属性配置-->
+    <bean id="thriftConnectionFactory" class="org.bupt.common.thrift.ThriftConnectionFactory">
+        <property name="proxyIP" value="${thrift.nlpProxyIP}"/>
+        <property name="proxyPort" value="${thrift.nlpProxyPort}" />
+    </bean>
+    <bean id="genericObjectPoolConfig" class="org.apache.commons.pool2.impl.GenericObjectPoolConfig">
+        <property name="maxIdle" value="10"/>
+        <property name="maxTotal" value="20" />
+        <property name="minIdle" value="3" />
+        <property name="testOnBorrow" value="true" />
+        <property name="maxWaitMillis" value="1000" />
+        <property name="minEvictableIdleTimeMillis" value="60000" />
+        <property name="timeBetweenEvictionRunsMillis" value="30000" />
+        <property name="numTestsPerEvictionRun" value="3" />
+        <property name="testWhileIdle" value="true" />
+    </bean>
+    <bean id="thriftConnectionService" class="org.bupt.common.thrift.ThriftConnectionService">
+        <constructor-arg name="thriftConnectionFactory" ref="thriftConnectionFactory"/>
+        <constructor-arg name="genericObjectPoolConfig" ref="genericObjectPoolConfig"/>
+    </bean>
+
+</beans>
