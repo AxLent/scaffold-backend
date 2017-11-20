@@ -1,7 +1,5 @@
 package org.bupt.common.bean;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * 通用返回结果
@@ -9,23 +7,11 @@ import org.slf4j.LoggerFactory;
  */
 public class ErrorResult {
 
-	private static final Logger logger = LoggerFactory.getLogger(ErrorResult.class);
-
 	private Integer error_code;
 	private String error_msg;
 
 
-	/**
-	 * @param error_code
-	 * @param error_msg
-	 * @return
-	 */
-	public static ErrorResult build(Integer error_code, String error_msg) {
-		return new ErrorResult(error_code, error_msg);
-	}
-
-
-	private ErrorResult(Integer error_code, String error_msg) {
+	public ErrorResult(Integer error_code, String error_msg) {
 		this.error_code = error_code;
 		this.error_msg = error_msg;
 	}
