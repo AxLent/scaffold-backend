@@ -28,7 +28,7 @@ public class TokenCheckInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws
             Exception {
 
-        logger.info("进入TokenCertifyInterceptor");
+        logger.info("进入TokenCheckInterceptor");
 
         // 验证token的有效性
         try {
