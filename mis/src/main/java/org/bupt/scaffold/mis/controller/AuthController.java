@@ -1,14 +1,15 @@
 package org.bupt.scaffold.mis.controller;
 
-import org.bupt.scaffold.mis.constant.EnvConsts;
+
 import org.bupt.common.bean.ResponseResult;
 import org.bupt.common.util.MD5Util;
+import org.bupt.common.util.token.Identity;
+import org.bupt.common.util.token.TokenUtil;
+import org.bupt.scaffold.mis.constant.EnvConsts;
 import org.bupt.scaffold.mis.constant.RoleConsts;
 import org.bupt.scaffold.mis.pojo.po.User;
 import org.bupt.scaffold.mis.service.RedisService;
 import org.bupt.scaffold.mis.service.UserService;
-import org.bupt.common.util.token.Identity;
-import org.bupt.common.util.token.TokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,6 @@ public class AuthController {
 
     @Autowired
     private EnvConsts envConsts;
-
-//    @Reference
-//    private static SayHelloService sayHelloService;
-
 
 
     /**
@@ -222,7 +219,7 @@ public class AuthController {
         identity.setId(user.getId().toString());
         identity.setIssuer(envConsts.TOKEN_ISSUER);
         identity.setClientId(user.getUsername());
-        identity.setAuthority(user.getRole());
+        identity.setPermission(user.getRole());
         identity.setDuration(envConsts.TOKEN_DURATION);
         String token = TokenUtil.createToken(identity, envConsts.TOKEN_API_KEY_SECRET);
         identity.setToken(token);
@@ -237,9 +234,9 @@ public class AuthController {
      *
      * @return
      */
-    @RequestMapping(value = "login_deny")
-    public ResponseResult loginDeny() {
-        logger.info("login_deny");
+    @RequestMapping(value = "token_deny")
+    public ResponseResult tokenDeny() {
+        logger.info("登录认证失败");
         return ResponseResult.error("请先登录");
     }
 
@@ -249,9 +246,9 @@ public class AuthController {
      *
      * @return
      */
-    @RequestMapping(value = "auth_deny")
-    public ResponseResult authDeny() {
-        logger.info("auth_deny");
+    @RequestMapping(value = "role_deny")
+    public ResponseResult roleDeny() {
+        logger.info("权限认证失败");
         return ResponseResult.error("无此权限");
     }
 }

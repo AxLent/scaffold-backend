@@ -2,13 +2,14 @@ package org.bupt.scaffold.mis.controller;
 
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.fileupload.util.Streams;
-import org.bupt.scaffold.mis.annotation.RequiredAuths;
 import org.bupt.common.bean.PageResult;
 import org.bupt.common.bean.ResponseResult;
 import org.bupt.common.util.FileUtil;
 import org.bupt.common.util.MD5Util;
 import org.bupt.common.util.Validator;
 import org.bupt.common.util.token.Identity;
+import org.bupt.scaffold.mis.annotation.RequiredPermission;
+import org.bupt.scaffold.mis.annotation.RequiredRoles;
 import org.bupt.scaffold.mis.constant.EnvConsts;
 import org.bupt.scaffold.mis.pojo.po.User;
 import org.bupt.scaffold.mis.service.RedisService;
@@ -143,7 +144,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "{userId}", method = RequestMethod.DELETE)
-    @RequiredAuths(auths = {"系统管理员"})
+    @RequiredRoles(roles = {"系统管理员"})
     public ResponseResult deleteById(@PathVariable("userId") Integer userId) {
 
         User user = this.userService.queryById(userId);

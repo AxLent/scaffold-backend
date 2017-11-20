@@ -6,11 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 自定义注解用于权限认证
- * Created by zlren on 17/6/10.
+ * Controller方法放行的角色
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface RequiredAuths {
-    String[] auths() default {};
+public @interface RequiredRoles {
+    String[] roles() default {};
 }

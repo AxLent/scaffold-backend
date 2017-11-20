@@ -22,15 +22,15 @@
             <mvc:exclude-mapping path="/auth/employee/login"/>
             <mvc:exclude-mapping path="/auth/register"/>
             <mvc:exclude-mapping path="/auth/send_sms"/>
-            <mvc:exclude-mapping path="/auth/login_deny"/>
-            <mvc:exclude-mapping path="/auth/auth_deny"/>
-            <bean class="org.bupt.scaffold.mis.interceptor.TokenCertifyInterceptor"/>
+            <mvc:exclude-mapping path="/auth/token_deny"/>
+            <mvc:exclude-mapping path="/auth/role_deny"/>
+            <bean class="org.bupt.aiop.mis.interceptor.TokenCertifyInterceptor"/>
         </mvc:interceptor>
 
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <!-- 如果不定义 mvc:mapping path 将拦截所有的URL请求 -->
-            <bean class="org.bupt.scaffold.mis.interceptor.AuthCheckInterceptor"/>
+            <bean class="org.bupt.scaffold.mis.interceptor.RoleCheckInterceptor"/>
         </mvc:interceptor>
 
         <!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 -->

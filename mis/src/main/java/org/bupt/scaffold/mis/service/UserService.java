@@ -121,7 +121,7 @@ public class UserService extends BaseService<User> {
         identity.setId(id);
         identity.setIssuer(issuer);
         identity.setClientId(username);
-        identity.setAuthority(role);
+        identity.setPermission(role);
         identity.setDuration(duration);
         String token = TokenUtil.createToken(identity, apiKeySecret);
 
