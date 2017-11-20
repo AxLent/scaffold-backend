@@ -56,7 +56,7 @@ public class PermissionCheckInterceptor extends HandlerInterceptorAdapter {
 
         logger.info("权限拒绝");
         // 拦截之后应该返回公共结果, 这里没做处理
-        response.sendRedirect("/restapi/oauth/permission_deny");
+        response.sendRedirect("/api/auth/permission_deny"); //需写全路径！
         return false;
     }
 }
