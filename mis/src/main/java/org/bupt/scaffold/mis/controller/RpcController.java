@@ -22,7 +22,7 @@ import java.util.Map;
  * UserController
  */
 @RestController
-@RequestMapping("rpc")
+@RequestMapping("api/rpc")
 public class RpcController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RpcController.class);
