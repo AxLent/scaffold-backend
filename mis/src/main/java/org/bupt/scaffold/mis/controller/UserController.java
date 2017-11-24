@@ -8,11 +8,9 @@ import org.bupt.common.util.FileUtil;
 import org.bupt.common.util.MD5Util;
 import org.bupt.common.util.Validator;
 import org.bupt.common.util.token.Identity;
-import org.bupt.scaffold.mis.annotation.RequiredPermission;
 import org.bupt.scaffold.mis.annotation.RequiredRoles;
 import org.bupt.scaffold.mis.constant.EnvConsts;
 import org.bupt.scaffold.mis.pojo.po.User;
-import org.bupt.scaffold.mis.service.RedisService;
 import org.bupt.scaffold.mis.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,9 +36,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private RedisService redisService;
 
     @Autowired
     private EnvConsts envConsts;

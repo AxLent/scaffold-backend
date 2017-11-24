@@ -4,7 +4,6 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import org.apache.thrift.protocol.TProtocol;
 import org.bupt.common.bean.ResponseResult;
 import org.bupt.scaffold.mis.constant.EnvConsts;
-import org.bupt.scaffold.mis.service.RedisService;
 import org.bupt.scaffold.rpcapi.dubbo.DubboService;
 import org.bupt.scaffold.rpcapi.thrift.ThriftService;
 import org.bupt.common.thrift.ThriftConnectionService;
@@ -27,9 +26,6 @@ public class RpcController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RpcController.class);
 
-
-	@Autowired
-	private RedisService redisService;
 
 	@Autowired
 	private EnvConsts envConsts;

@@ -9,7 +9,6 @@ import org.bupt.common.constant.ErrorConsts;
 import org.bupt.common.constant.OauthConsts;
 import org.bupt.common.util.MD5Util;
 import org.bupt.common.util.Validator;
-import org.bupt.scaffold.mis.service.RedisService;
 import org.bupt.scaffold.mis.service.UserService;
 import org.bupt.common.util.token.Identity;
 import org.bupt.common.util.token.TokenUtil;
@@ -35,9 +34,6 @@ public class OauthController {
 
 	@Autowired
 	private UserService userService;
-
-	@Autowired
-	private RedisService redisService;
 
 	@Autowired
 	private EnvConsts envConsts;
@@ -140,9 +136,9 @@ public class OauthController {
 			}
 		}
 
-		if (redisService.get(phone) != null) {
-			return ResponseResult.error("请1分钟后再试");
-		}
+//		if (redisService.get(phone) != null) {
+//			return ResponseResult.error("请1分钟后再试");
+//		}
 
 		StringBuilder code = new StringBuilder();
 		Random random = new Random();
