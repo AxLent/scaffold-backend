@@ -1,6 +1,7 @@
 package org.bupt.scaffold.mis.interceptor;
 
 import org.bupt.common.constant.ErrorConsts;
+import org.bupt.common.constant.OauthConsts;
 import org.bupt.common.util.Validator;
 import org.bupt.common.util.token.Identity;
 import org.bupt.scaffold.mis.annotation.RequiredRoles;
@@ -51,7 +52,7 @@ public class RoleCheckInterceptor extends HandlerInterceptorAdapter {
             // 这里我为了方便是直接参数传入权限, 在实际操作中应该是从参数中获取用户Id
             // 到数据库权限表中查询用户拥有的权限集合, 与set集合中的权限进行对比完成权限校验
 
-            String role = ((Identity) request.getSession().getAttribute("identity")).getPermission();
+            String role = ((Identity) request.getSession().getAttribute(OauthConsts.KEY_IDENTITY)).getPermission();
             logger.info("用户的角色是 {}", role);
             if (!Validator.checkEmpty(role)) {
                 if (roleSet.contains(role)) {

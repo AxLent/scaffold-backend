@@ -38,7 +38,7 @@ public class TokenCheckInterceptor implements HandlerInterceptor {
             Identity identity = TokenUtil.parseToken(accessToken, envConsts.TOKEN_API_KEY_SECRET);
 
             //把identity存入session中(其中包含用户名、角色、过期时间戳等)
-            request.getSession().setAttribute("identity", identity);
+            request.getSession().setAttribute(OauthConsts.KEY_IDENTITY, identity);
 
             logger.info("应用={}: token通过认证", identity.getClientId());
             return true;

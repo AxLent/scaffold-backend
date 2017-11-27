@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import org.apache.commons.fileupload.util.Streams;
 import org.bupt.common.bean.PageResult;
 import org.bupt.common.bean.ResponseResult;
+import org.bupt.common.constant.OauthConsts;
 import org.bupt.common.util.FileUtil;
 import org.bupt.common.util.MD5Util;
 import org.bupt.common.util.Validator;
@@ -199,7 +200,7 @@ public class UserController {
         String username = (String) params.get("username");
         String name = (String) params.get("name");
 
-        Identity identity = (Identity) session.getAttribute("identity");
+        Identity identity = (Identity) session.getAttribute(OauthConsts.KEY_IDENTITY);
 
         List<User> userList = this.userService.queryUserList(pageNow, pageSize, role, username, name, identity);
         PageResult pageResult = new PageResult(new PageInfo<>(userList));
