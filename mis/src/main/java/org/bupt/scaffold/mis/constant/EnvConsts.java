@@ -28,11 +28,10 @@ public class EnvConsts {
 	@Value("${token.apiKeySecret}")
 	public String TOKEN_API_KEY_SECRET;
 
-	@Value("${accesstoken.apiKeySecret}")
-	public String ACCESS_TOKEN_API_KEY_SECRET;
 
-	@Value("${refreshtoken.apiKeySecret}")
-	public String REFRESH_TOKEN_API_KEY_SECRET;
+	//Access_Token
+	@Value("${accesstoken.issuer}")
+	public String ACCESS_TOKEN_ISSUER;
 
 	@Value("${accesstoken.duration}")
 	public Long ACCESS_TOKEN_DURATION;
@@ -40,10 +39,20 @@ public class EnvConsts {
 	@Value("${refreshtoken.duration}")
 	public Long REFRESH_TOKEN_DURATION;
 
+	@Value("${accesstoken.apiKeySecret}")
+	public String ACCESS_TOKEN_API_KEY_SECRET;
+
+	@Value("${refreshtoken.apiKeySecret}")
+	public String REFRESH_TOKEN_API_KEY_SECRET;
+
 	//SMS
 	@Value("${sms.code.expire}")
 	public Integer SMS_CODE_EXPIRE;
 
 	@Value("${sms.code.len}")
 	public Integer SMS_CODE_LEN;
+
+	//头像
+	@Value("${default.avatar}")
+	public String DEFAULT_AVATAR;
 }
