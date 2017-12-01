@@ -7,7 +7,7 @@ package org.bupt.common.util.token;
 public class Identity {
 
 	private String token;
-	private String id; // 对应id
+	private Integer id; // 对应id
 	private String issuer;
 	private String clientId; //client_id/username
 	private String permission; // 可以是角色，也可以是权限
@@ -22,11 +22,11 @@ public class Identity {
 		this.token = token;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

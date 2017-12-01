@@ -76,7 +76,7 @@ public class OauthController {
 			try {
 
 				//test
-				String id = "1"; //应用的id
+				Integer id = 1; //应用的id
 				String scope = "text_keywords,word_pos,word_seg"; //能力权限(注意如果一个权限也没有是none)
 
 				// 封装生成access_token需要的身份信息
@@ -288,7 +288,7 @@ public class OauthController {
 
 		// 生成token
 		Identity identity = new Identity();
-		identity.setId(user.getId().toString());
+		identity.setId(user.getId());
 		identity.setIssuer(envConsts.TOKEN_ISSUER);
 		identity.setClientId(user.getUsername());
 		identity.setPermission(user.getRole());
